@@ -1,0 +1,10 @@
+.estilo_tarjeta{
+    width: 250px;
+    height: 280px;
+    margin: 50px;
+    background-color: aqua;
+}
+
+.imgMedida{
+    width: 50px;
+}

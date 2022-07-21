@@ -1,0 +1,10 @@
+[
+    {
+        "id": "1",
+        "nombre": "gorro",
+        "precio": 300,
+        "stock": 5,
+        "url": "images/gorros/gorro_lana_gris.jpeg",
+        "descr":"aqui corresponde a la descripcion del producto."
+    }
+]

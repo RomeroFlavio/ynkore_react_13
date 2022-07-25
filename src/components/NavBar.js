@@ -17,17 +17,17 @@ function NavBar() {
                 <div className="collapse navbar-collapse d-flex justify-content-center" id="navbarNav">
                     <ul className="navbar-nav">
                         <li className="nav-item">
-                        <Link class="nav-link" to='/'>
+                        <Link className="nav-link" to='/'>
                             Inicio
                         </Link>
                         </li>
                         <li className="nav-item">
-                        <Link class="nav-link" to={`/category/Mujeres`}>
+                        <Link className="nav-link" to={`/category/Mujeres`}>
                             Mujeres
                         </Link>
                         </li>
                         <li className="nav-item">
-                        <Link class="nav-link" to={`/category/Hombres`}>
+                        <Link className="nav-link" to={`/category/Hombres`}>
                             Hombres
                         </Link>
                         </li>

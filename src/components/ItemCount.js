@@ -14,12 +14,12 @@ function ItemCount({stock, initial, onAdd}) {
 
     return (
         
-    <>
-        <button onClick={disminuir}>-</button>
-        {count}
-        <button onClick={aumentar}>+</button><br></br>
-        <button onClick={() => onAdd(count) }>Agregar al carrito</button>
-    </>
+        <>
+            <button type="button" className="btn btn-dark" onClick={disminuir}>-</button>
+            {count}
+            <button type="button" className="btn btn-dark" onClick={aumentar}>+</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => onAdd(count) }>Agregar al carrito</button>
+        </>
 
     );
   }

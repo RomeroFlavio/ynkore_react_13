@@ -1,5 +1,17 @@
+import ItemCount from "./ItemCount";
+import { useState } from 'react';
+import Intercambiabilidad from "./Intercambiabilidad";
+
 const ItemDetail = ({data}) => {
+
+    const [state, setState] = useState(0);
+
+    const onAdd = (count) => {
+        setState(count)
+    }
+    
     return <>
+
         <div className="estilo_tarjeta">
             <img src={`../${data.url}`} className="card-img-top imgMedida" alt="img"/>
             <div>
@@ -7,7 +19,14 @@ const ItemDetail = ({data}) => {
                 <p className="card-text">{data.precio}</p>
                 <p className="card-text">Stock: {data.stock}</p>
                 <p className="card-text">Descrip: {data.descr}</p>
-                <a href="#" className="btn btn-primary">Comprar</a>
+
+                {
+                    state === 0 ?
+                    <ItemCount stock={data.stock} initial={1} onAdd={onAdd}/>
+                    :
+                    <Intercambiabilidad/>
+                }
+                
             </div>
         </div>
     </>;

@@ -1,15 +1,22 @@
 import ItemCount from "./ItemCount";
 import { useState } from 'react';
 import Intercambiabilidad from "./Intercambiabilidad";
+import { useCartContext } from "../context/CartContext";
+
+
 
 const ItemDetail = ({data}) => {
 
     const [state, setState] = useState(0);
 
+    const { addToCart } = useCartContext()
+
     const onAdd = (count) => {
+        
         setState(count)
+        addToCart({...data, cantidad: count})
     }
-    
+
     return <>
 
         <div className="estilo_tarjeta">

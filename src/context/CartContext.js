@@ -22,7 +22,9 @@ const CartContextProvider = ( {children} ) => {
     const InCart = (comparar) => {
         let producto = cartList.find(prod => prod.id === comparar.id)
         if(producto !== undefined){
-            alert(`Ya adquirio ${comparar.nombre}.`);
+
+            const productoIndex = cartList.indexOf(producto)
+            !producto ? setCartList([...cartList, comparar]) : cartList[productoIndex].cantidad += comparar.cantidad
             return -1;
         }
 

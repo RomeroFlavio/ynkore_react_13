@@ -15,11 +15,11 @@ const CartContextProvider = ( {children} ) => {
                 objProducto
             ]);
         }else{
-            InCart(objProducto);
+            inCart(objProducto);
         }
     };
     
-    const InCart = (comparar) => {
+    const inCart = (comparar) => {
         let producto = cartList.find(prod => prod.id === comparar.id)
         if(producto !== undefined){
 
@@ -33,6 +33,32 @@ const CartContextProvider = ( {children} ) => {
             comparar
         ])
     };
+
+    const removeItem = (quit) => {
+        let index = cartList.findIndex(product => product === quit);
+        if(index !== -1){
+            cartList.splice(index,1);
+            setCartList([
+                ...cartList
+            ]);
+        }
+    }
+
+    const count = () => {
+        let contador = 0;
+        cartList.forEach(prod => {
+            contador += prod.cantidad;
+        });
+        return contador;
+    }
+
+    const costo = () => {
+        let acumulador = 0;
+        cartList.forEach(lib => {
+            acumulador += (lib.precio * lib.cantidad);
+        });
+        return acumulador;
+    }
     
     const vaciarCarrito = () =>{
         setCartList([])
@@ -42,7 +68,10 @@ const CartContextProvider = ( {children} ) => {
         <CartContext.Provider value={{
             cartList,
             addToCart,
-            vaciarCarrito
+            vaciarCarrito,
+            removeItem,
+            count,
+            costo,
         }}>
             {children} 
         </CartContext.Provider>

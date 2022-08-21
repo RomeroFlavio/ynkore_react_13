@@ -4,8 +4,6 @@ import { useCartContext } from "../context/CartContext"
 
 function Formulario({enviarDatos}) {
 
-    const { addData } = useCartContext()
-
     const {register, formState: { errors }, handleSubmit} = useForm();
 
     return (

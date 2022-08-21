@@ -7,7 +7,7 @@ function NavBar() {
         
     <div className="container-fluid">
         <nav className="navbar-expand-lg navbar-light bg-light">
-            <div className="container-fluid d-flex justify-content-between color">
+            <div className="container-fluid d-flex justify-content-between align-items-center color">
                 <div>
                     <Link to='/'>
                             <img src={logo} className="App-logo logo" alt="logo" />

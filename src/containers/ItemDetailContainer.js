@@ -4,9 +4,10 @@ import ItemDetail from '../components/ItemDetail';
 import {useParams} from 'react-router-dom';
 
 import {getDoc, getFirestore, doc} from 'firebase/firestore';
+import Loading from '../components/loading';
 
 const ItemDetailContainer = () => {
-
+    const [load, setLoad] = useState(true);
     const [productos, setProductos] = useState([]);
     const {id} = useParams();
 
@@ -19,15 +20,16 @@ const ItemDetailContainer = () => {
             reject("not")
         })
         setTimeout(() => {
-            
             getItem.then(resp => setProductos({id: resp.id, ...resp.data()}))
+            .catch(err => console.log(err))
+            .finally(() => setLoad(false))
         }, 2000);
 }, [id]);
 
     return(
         
         <div >
-            <ItemDetail data={productos}/>
+            { load ? <Loading/> : <ItemDetail data={productos}/> }
         </div>
 
     )

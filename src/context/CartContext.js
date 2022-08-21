@@ -9,6 +9,7 @@ export const useCartContext = () => useContext(CartContext)
 const CartContextProvider = ( {children} ) => {
 
     const [cartList, setCartList] = useState([])
+    const [count, setCount] = useState(0)
     
     const addToCart = (objProducto) =>{
         if(cartList.length === 0){
@@ -16,6 +17,7 @@ const CartContextProvider = ( {children} ) => {
                 ...cartList,
                 objProducto
             ]);
+            setCount(objProducto.cantidad)
         }else{
             inCart(objProducto);
         }
@@ -27,6 +29,7 @@ const CartContextProvider = ( {children} ) => {
 
             const productoIndex = cartList.indexOf(producto)
             !producto ? setCartList([...cartList, comparar]) : cartList[productoIndex].cantidad += comparar.cantidad
+            setCount(count + comparar.cantidad)
             return -1;
         }
 
@@ -34,6 +37,7 @@ const CartContextProvider = ( {children} ) => {
             ...cartList,
             comparar
         ])
+        setCount(count + comparar.cantidad)
     };
 
     const removeItem = (quit) => {
@@ -43,15 +47,8 @@ const CartContextProvider = ( {children} ) => {
             setCartList([
                 ...cartList
             ]);
+            setCount(count - quit.cantidad)
         }
-    }
-
-    const count = () => {
-        let contador = 0;
-        cartList.forEach(prod => {
-            contador += prod.cantidad;
-        });
-        return contador;
     }
 
     const costo = () => {
@@ -66,17 +63,14 @@ const CartContextProvider = ( {children} ) => {
         setCartList([])
     }
 
-
-
-
-
-    const addData = async (datos) => {
+    const addData = (datos) => {
         const orden = {
             name: datos.nombre,
             phone: datos.telefono,
             email: datos.email,
+            email2: datos.verificarEmail,
         }
-        await generarOrden(orden);
+        orden.email === orden.email2 ? generarOrden(orden) : alert("El email no coincide")
     }
 
     const generarOrden = async (orden) => {

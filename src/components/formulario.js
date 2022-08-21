@@ -4,7 +4,7 @@ import { useCartContext } from "../context/CartContext"
 
 function Formulario({enviarDatos}) {
 
-    const { generarOrden } = useCartContext()
+    const { addData } = useCartContext()
 
     const {register, formState: { errors }, handleSubmit} = useForm();
 
@@ -41,7 +41,7 @@ function Formulario({enviarDatos}) {
                     {errors.verificarEmail?.type === 'required' && <p className='text-dark bg-warning'>El campo verificar email es requerido.</p>}
                 </div>
                 <div className="col-12 mt-5">
-                    <button onClick={() => generarOrden()} className="btn btn-dark">Realizar pedido</button>
+                    <button className="btn btn-dark">Realizar pedido</button>
                 </div>
             </form>
         </div>
